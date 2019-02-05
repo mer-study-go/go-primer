@@ -1,0 +1,181 @@
+{
+  "title": "6 - Interfaces",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<h3>Purpose of Interfaces</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/3D9C8EAD1F6D2D3FD7BCD9B3AAEF7780.png\" alt=\"Screen Shot 2018-08-21 at 11.11.23 AM.png\" width=\"902\" height=\"434\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/9442D423E15AC452D1B7B2187AA3DECF.png\" alt=\"Screen Shot 2018-08-21 at 11.13.15 AM.png\" width=\"994\" height=\"426\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/057411EF283F5F21C36BEAD61F9AAAF1.png\" alt=\"Screen Shot 2019-02-04 at 20.19.36.png\" width=\"918\" height=\"335\"><br>"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Interfaces in Practice</h3>"
+    },
+    {
+      "type": "text",
+      "data": "main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "type bot interface {\n\tgetGreeting() string\n}\n\ntype englishBot struct{}\ntype spanishBot struct{}\n\nfunc main() {\n\teb := englishBot{}\n\tsb := spanishBot{}\n\n\tprintGreeting(eb)\n\tprintGreeting(sb)\n\n}\n\nfunc printGreeting(b bot) {\n\tfmt.Println(b.getGreeting())\n}\n\nfunc (englishBot) getGreeting() string {\n\t// VERY custom logic for generating an english greeting\n\treturn \"Hi There!\"\n}\n\nfunc (spanishBot) getGreeting() string {\n\t// VERY custom logic for generating an spanish greeting\n\treturn \"Hola!\"\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Rules of Interfaces</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/CC1C6254A6EF904491CFCB4DF33A2039.png\" alt=\"Screen Shot 2018-08-21 at 5.25.32 PM.png\" width=\"821\" height=\"439\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Extra Interface Notes</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/478A69889C368365E3B4D286879400FB.png\" alt=\"Screen Shot 2018-08-21 at 5.30.49 PM.png\" width=\"940\" height=\"535\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>The HTTP Package</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/2AA222779AABF95C545FDF739485F25C.png\" alt=\"Screen Shot 2018-08-21 at 5.38.38 PM.png\" width=\"393\" height=\"384\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>The Reader Interface</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/4172FA60A6CF7CCF2188CA5375A3E4B3.png\" alt=\"Screen Shot 2018-08-21 at 6.25.18 PM.png\" width=\"1083\" height=\"544\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/66E25EF0373983FDD97FAA043D372B77.png\" alt=\"Screen Shot 2018-08-21 at 6.28.31 PM.png\" width=\"1101\" height=\"556\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>More on the Reader Interface</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/483A06828AEC80C91804E15478C4EA7D.png\" alt=\"Screen Shot 2018-08-21 at 6.34.02 PM.png\" width=\"922\" height=\"507\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Working with the Read Function</h3>"
+    },
+    {
+      "type": "text",
+      "data": "main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n\t\"os\"\n)\n\nfunc main() {\n\tresp, err := http.Get(\"https://www.google.com/\")\n\tif err != nil {\n\t\tfmt.Println(\"Error: \", err)\n\t\tos.Exit(1)\n\t}\n\n\tbs := make([]byte, 99999)\n\tresp.Body.Read(bs)\n\tfmt.Println(string(bs))\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>The Writer Interface</h3>"
+    },
+    {
+      "type": "text",
+      "data": "main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nimport (\n\t\"fmt\"\n\t\"io\"\n\t\"net/http\"\n\t\"os\"\n)\n\nfunc main() {\n\tresp, err := http.Get(\"https://www.google.com/\")\n\tif err != nil {\n\t\tfmt.Println(\"Error: \", err)\n\t\tos.Exit(1)\n\t}\n\n\tio.Copy(os.Stdout, resp.Body)\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>A Custom Writer</h3>"
+    },
+    {
+      "type": "text",
+      "data": "main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nimport (\n\t\"fmt\"\n\t\"io\"\n\t\"net/http\"\n\t\"os\"\n)\n\ntype logWriter struct{}\n\nfunc main() {\n\tresp, err := http.Get(\"https://www.google.com/\")\n\tif err != nil {\n\t\tfmt.Println(\"Error: \", err)\n\t\tos.Exit(1)\n\t}\n\n\tlw := logWriter{}\n\n\tio.Copy(lw, resp.Body)\n}\n\nfunc (logWriter) Write(bs []byte) (int, error) {\n\tfmt.Println(string(bs))\n\tfmt.Println(\"Just wrote this many bytes:\", len(bs))\n\treturn len(bs), nil\n}"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": "<div><br></div><div><br></div><div><br></div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": "<div><br></div><div><br></div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": "<div><br></div><div><br></div>"
+    },
+    {
+      "type": "text",
+      "data": "<div><br></div><div><br></div><div><br></div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

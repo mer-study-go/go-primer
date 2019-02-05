@@ -1,0 +1,26 @@
+{
+  "title": "1 - Getting Started",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<h3>Environment Setup</h3>"
+    },
+    {
+      "type": "text",
+      "data": "Check Go Version"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "data": "go version"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

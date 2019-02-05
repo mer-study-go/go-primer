@@ -1,0 +1,215 @@
+{
+  "title": "2 - A Simple Start",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<h3>Boring OI’ Hello World</h3>"
+    },
+    {
+      "type": "text",
+      "data": "src/hello-world/main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tfmt.Println(\"Hi there!\")\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Five Important Questions</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/041AE82357E5439577B758E1CB4BE64E.png\" alt=\"Screen Shot 2019-01-31 at 12.04.54.png\" width=\"651\" height=\"444\">"
+    },
+    {
+      "type": "text",
+      "data": "<b>How do we run the code in our project?</b>"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "data": "go run main.go"
+    },
+    {
+      "type": "text",
+      "data": "How do we run the code in our project?"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/F126F137BC2DC996F67A704976C8F9D2.png\" alt=\"Screen Shot 2018-08-14 at 3.37.04 PM.png\" width=\"579\" height=\"553\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Go Packages</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/3C5AD659406338721169FC99D5E4E18C.png\" alt=\"Screen Shot 2019-01-31 at 12.19.34.png\" width=\"1043\" height=\"398\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/535188DAC64ED701A0401FFDBF61E78D.png\" alt=\"Screen Shot 2019-01-31 at 12.19.57.png\" width=\"708\" height=\"441\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/7526B8796F9D12BDB6C9E732F9BF245E.png\" alt=\"Screen Shot 2018-08-14 at 3.48.24 PM.png\" width=\"712\" height=\"324\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/0B4E4C1C4AFD4593ED0A08539B58DA15.png\" alt=\"Screen Shot 2019-01-31 at 12.32.53.png\" width=\"789\" height=\"454\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/0BE181B3F7A6F5CB6EFB4E9D7FBAAC0E.png\" alt=\"Screen Shot 2019-01-31 at 12.33.35.png\" width=\"831\" height=\"460\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/96D7CF4B1F48C8CD4BF0782010EED989.png\" alt=\"Screen Shot 2019-01-31 at 12.38.12.png\" width=\"925\" height=\"453\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Import Statements</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/234DC46D576A4B3DD4C9C67082249E7D.png\" alt=\"Screen Shot 2019-01-31 at 12.46.48.png\" width=\"696\" height=\"454\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/20C756531924D386A7DBF0DC9F4C8005.png\" alt=\"Screen Shot 2019-01-31 at 12.51.38.png\" width=\"795\" height=\"407\">"
+    },
+    {
+      "type": "text",
+      "data": "<a href=\"https://golang.org/pkg/\">https://golang.org/pkg/</a>"
+    },
+    {
+      "type": "text",
+      "data": "<h3>File Orgnizatoin</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/F4D88948FA6700A40E7E2DA143D6AEE2.png\" alt=\"Screen Shot 2019-01-31 at 12.58.21.png\" width=\"533\" height=\"365\"><br>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/EEE34772AA7C007F4F9403219CD18D62.png\" alt=\"Screen Shot 2019-01-31 at 12.58.50.png\" width=\"863\" height=\"431\">"
+    },
+    {
+      "type": "text",
+      "data": "<b>How is the main.go file organized?</b>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/F51D92DFFC97B54E5FA5E9841559B1B1.png\" alt=\"Screen Shot 2019-01-31 at 13.00.54.png\" width=\"870\" height=\"475\">"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": "<h3><br></h3>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": "<div><br></div><div><br></div><div><br></div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": "<div><br></div><div><br></div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

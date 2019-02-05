@@ -1,0 +1,159 @@
+{
+  "title": "5 - Maps",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<h3>What’s a Map?</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/C97FBCE14A26FE731ACDEAB7CC615CEB.png\" alt=\"Screen Shot 2019-02-04 at 19.01.03.png\" width=\"458\" height=\"384\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/C2239145D3AEC2EF9DDE5C825147212B.png\" alt=\"Screen Shot 2019-02-04 at 19.01.56.png\" width=\"867\" height=\"406\">"
+    },
+    {
+      "type": "text",
+      "data": "/src/map/main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tcolors := map[string]string{\n\t\t\"red\":   \"#ff0000\",\n\t\t\"green\": \"#4bf745\",\n\t}\n\tfmt.Println(colors)\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Manipulating Maps</h3>"
+    },
+    {
+      "type": "text",
+      "data": "Another methods to create a map"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "var colors map[string]string"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "colors := make(map[string]string)"
+    },
+    {
+      "type": "text",
+      "data": "Assign value to the map"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "colors[\"white\"] = \"#ffffff\""
+    },
+    {
+      "type": "text",
+      "data": "To delete key in map"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "delete(colors, \"white\")"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Iterating Over Maps</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/E1C0529A4EB558329CE50443F661F5DC.png\" alt=\"Screen Shot 2018-08-20 at 5.29.22 PM.png\" width=\"787\" height=\"540\">"
+    },
+    {
+      "type": "text",
+      "data": "main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tcolors := map[string]string{\n\t\t\"red\":   \"#ff0000\",\n\t\t\"green\": \"#rbf745\",\n\t\t\"white\": \"#ffffff\",\n\t}\n\n\tprintMap(colors)\n}\n\nfunc printMap(c map[string]string) {\n\tfor color, hex := range c {\n\t\tfmt.Println(\"Hex code for\", color, \"is\", hex)\n\t}\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Diffrerences Between Maps and Structs</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/62C1AC0F5B1CCF7BF96A63C15C323BBD.png\" alt=\"Screen Shot 2018-08-20 at 5.33.57 PM.png\" width=\"1487\" height=\"641\">"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": "<br>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": "<div><br></div><div><br></div><div><br></div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

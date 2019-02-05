@@ -1,0 +1,158 @@
+{
+  "title": "7 - Channels and Go Routines",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<h3>Website Status Checker</h3>"
+    },
+    {
+      "type": "text",
+      "data": "Non concurrent method&nbsp;"
+    },
+    {
+      "type": "text",
+      "data": "Main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n)\n\nfunc main() {\n\tlinks := []string{\n\t\t\"http://google.com\",\n\t\t\"http://facebook.com\",\n\t\t\"http://stackoverflow.com\",\n\t\t\"http://golang.org\",\n\t\t\"http://amazon.com\",\n\t}\n\n\tfor _, link := range links {\n\t\tcheckLink(link)\n\t}\n}\n\nfunc checkLink(link string) {\n\t_, err := http.Get(link)\n\tif err != nil {\n\t\tfmt.Println(link, \"might be down!\")\n\t\treturn\n\t}\n\n\tfmt.Println(link, \"is up!\")\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Receiving Messages</h3>"
+    },
+    {
+      "type": "text",
+      "data": "main.go &nbsp;"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nimport (\n    \"fmt\"\n    \"net/http\"\n)\n\nfunc main() {\n    links := []string{\n        \"http://linkedin.com\",\n        \"http://google.com\",\n        \"http://facebook.com\",\n        \"http://stackoverflow.com\",\n        \"http://golang.org\",\n        \"http://amazon.com\",\n    }\n\n    c := make(chan string)\n\n    for _, link := range links {\n        go checkLink(link, c)\n    }\n\n    for i := 0; i < len(links); i++ {\n        fmt.Println(<-c)\n    }\n}\n\nfunc checkLink(link string, c chan string) {\n    _, err := http.Get(link)\n    if err != nil {\n        fmt.Println(link, \"might be down!\")\n        c <- \"Might be down I think\"\n        return\n    }\n\n    fmt.Println(link, \"is up!\")\n    c <- \"Yep it's up\"\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Repeating Routines</h3>"
+    },
+    {
+      "type": "text",
+      "data": "main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n)\n\nfunc main() {\n\tlinks := []string{\n\t\t\"http://linkedin.com\",\n\t\t\"http://google.com\",\n\t\t\"http://facebook.com\",\n\t\t\"http://stackoverflow.com\",\n\t\t\"http://golang.org\",\n\t\t\"http://amazon.com\",\n\t}\n\n\tc := make(chan string)\n\n\tfor _, link := range links {\n\t\tgo checkLink(link, c)\n\t}\n\n\tfor {\n\t\tgo checkLink(<-c, c)\n\t}\n}\n\nfunc checkLink(link string, c chan string) {\n\t_, err := http.Get(link)\n\tif err != nil {\n\t\tfmt.Println(link, \"might be down!\")\n\t\tc <- link\n\t\treturn\n\t}\n\n\tfmt.Println(link, \"is up!\")\n\tc <- link\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Alternative Loop Syntax</h3>"
+    },
+    {
+      "type": "text",
+      "data": "main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nimport (\n    \"fmt\"\n    \"net/http\"\n)\n\nfunc main() {\n    links := []string{\n        \"http://linkedin.com\",\n        \"http://google.com\",\n        \"http://facebook.com\",\n        \"http://stackoverflow.com\",\n        \"http://golang.org\",\n        \"http://amazon.com\",\n    }\n\n    c := make(chan string)\n\n    for _, link := range links {\n        go checkLink(link, c)\n    }\n\n    for l := range c {\n        go checkLink(l, c)\n    }\n}\n\nfunc checkLink(link string, c chan string) {\n    _, err := http.Get(link)\n    if err != nil {\n        fmt.Println(link, \"might be down!\")\n        c <- link\n        return\n    }\n\n    fmt.Println(link, \"is up!\")\n    c <- link\n}\n"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Function Literals</h3>"
+    },
+    {
+      "type": "text",
+      "data": "main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n\t\"time\"\n)\n\nfunc main() {\n\tlinks := []string{\n\t\t\"http://linkedin.com\",\n\t\t\"http://google.com\",\n\t\t\"http://facebook.com\",\n\t\t\"http://stackoverflow.com\",\n\t\t\"http://golang.org\",\n\t\t\"http://amazon.com\",\n\t}\n\n\tc := make(chan string)\n\n\tfor _, link := range links {\n\t\tgo checkLink(link, c)\n\t}\n\n\tfor l := range c {\n\t\tgo func(link string) {\n\t\t\ttime.Sleep(5 * time.Second)\n\t\t\tcheckLink(link, c)\n\t\t}(l)\n\t}\n}\n\nfunc checkLink(link string, c chan string) {\n\t_, err := http.Get(link)\n\tif err != nil {\n\t\tfmt.Println(link, \"might be down!\")\n\t\tc <- link\n\t\treturn\n\t}\n\n\tfmt.Println(link, \"is up!\")\n\tc <- link\n}"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

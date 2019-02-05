@@ -1,0 +1,536 @@
+{
+  "title": "3 - Deeper Into Go",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<h3>Project Overview</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/44C73AAFDE2E59EF186EC326E050FCD6.png\" alt=\"Screen Shot 2018-08-14 at 5.38.58 PM.png\" width=\"527\" height=\"489\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>New Project Folder</h3>"
+    },
+    {
+      "type": "text",
+      "data": "src/cards"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Variable Declarations</h3>"
+    },
+    {
+      "type": "text",
+      "data": "src/cards/main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tvar card = \"Ace of Spades\"\n\tfmt.Println(card)\n}"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/FC84E23E1F0B47E378E0E9A5ED1029B7.png\" alt=\"Screen Shot 2018-08-14 at 5.52.57 PM.png\" width=\"920\" height=\"283\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/3B6EE82AAE386DCFB2973B0C6D2B62A4.png\" alt=\"Screen Shot 2018-08-14 at 5.53.52 PM.png\" width=\"472\" height=\"331\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/C17D218A02B49A72968F3B838B13A1B5.png\" alt=\"Screen Shot 2018-08-14 at 5.55.43 PM.png\" width=\"652\" height=\"431\"><br>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\t// var card = \"Ace of Spades\"\n\tcard := \"Ace of Spades\"\n\tfmt.Println(card)\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Functions and Return Types</h3>"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tcard := newCard()\n\tfmt.Println(card)\n}"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func newCard() string {\n\treturn \"Five of Diamonds\"\n}"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/F0635B90301813E2AD1DED5695176B0E.png\" alt=\"Screen Shot 2019-01-31 at 17.54.05.png\" width=\"714\" height=\"406\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Slices and For Loops</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/08CB9693A5ED6C88F8E3B5D6826F93FD.png\" alt=\"Screen Shot 2018-08-15 at 11.31.34 AM.png\" width=\"536\" height=\"201\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/47CEF9E3704A4F09657DAB6C7C4F0399.png\" alt=\"Screen Shot 2018-08-15 at 11.33.41 AM.png\" width=\"531\" height=\"419\">"
+    },
+    {
+      "type": "text",
+      "data": "<b>Slice example and Add new Item</b>"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tcards := []string{\"Ace of Diamonds\", newCard()}\n\t// Add new item\n\tcards = append(cards, \"Six of Spades\")\n\tfmt.Println(cards)\n}"
+    },
+    {
+      "type": "text",
+      "data": "<b>Iterate slice</b>"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tcards := []string{\"Ace of Diamonds\", newCard(), \"Six of Spades\"}\n\n\t// Iterate slice\n\tfor i, card := range cards {\n\t\tfmt.Println(i, card)\n\t}\n}"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/C5F70E4898EE9EA6C7E18C75D3F844F7.png\" alt=\"Screen Shot 2019-02-04 at 12.01.36.png\" width=\"576\" height=\"384\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>OO Approach vs Go Approach</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/C160717C3BB06F2607B6024A5F558ED0.png\" alt=\"Screen Shot 2019-02-04 at 12.24.26.png\" width=\"702\" height=\"445\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/DA90FC36D37DFD6C5B313EEFF9DCB280.png\" alt=\"Screen Shot 2019-02-04 at 13.10.08.png\" width=\"576\" height=\"469\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/B96B70D8505B6DEE14A8D271480FE869.png\" alt=\"Screen Shot 2019-02-04 at 13.14.58.png\" width=\"849\" height=\"378\">"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": "<h3>Custom Type Declarations</h3>"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/deck.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nimport \"fmt\"\n\n// Create a new type of 'deck'\n// which is a slice of strings\ntype deck []string\n\nfunc (d deck) print() {\n\tfor index, card := range d {\n\t\tfmt.Println(index, card)\n\t}\n}\n"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nfunc main() {\n    cards := deck{\"Ace of Diamonds\", newCard()}\n    cards = append(cards, \"Six of Spades\")\n\n    cards.print()\n}\n\nfunc newCard() string {\n    return \"Five of Diamonds\"\n}"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "data": "$ go run main.go deck.go"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Receiver Functions</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/0D04DBB775E4B6A5BD323EAB79213744.png\" alt=\"Screen Shot 2019-02-04 at 14.36.13.png\" width=\"441\" height=\"271\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/C2FF4437A7C7F9908F001CAA37AA7D4E.png\" alt=\"Screen Shot 2019-02-04 at 14.39.30.png\" width=\"575\" height=\"457\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Creating a New Deck</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/4AA1A3591A88C0633C090194F15B82B8.png\" alt=\"Screen Shot 2019-02-04 at 15.02.22.png\" width=\"810\" height=\"459\">"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/deck.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "// Create a new type of 'deck'\n// which is a slice of strings\ntype deck []string\n\nfunc newDeck() deck {\n\tcards := deck{}\n\n\tcardSuits := []string{\"Spades\", \"Diamonds\", \"Hearts\", \"Clubs\"}\n\tcardValues := []string{\"Ace\", \"Two\", \"Three\", \"Four\"}\n\n\tfor _, suit := range cardSuits {\n\t\tfor _, value := range cardValues {\n\t\t\tcards = append(cards, suit+\" of \"+value)\n\t\t}\n\t}\n\n\treturn cards\n\n}\n\nfunc (d deck) print() {\n\tfor index, card := range d {\n\t\tfmt.Println(index, card)\n\t}\n}"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n    cards := newDeck()\n    cards.print()\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Slice Range Syntax</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/0FF27D6CFB8A3FE5261648F1EE246AE6.png\" alt=\"Screen Shot 2019-02-04 at 15.15.07.png\" width=\"764\" height=\"402\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/BC8865648E62085B2284B8AC6ADD09B9.png\" alt=\"Screen Shot 2018-08-15 at 4.22.42 PM.png\" width=\"763\" height=\"351\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Multipole Return Values</h3>"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/deck.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func deal(d deck, handSize int) (deck, deck) {\n\treturn d[:handSize], d[handSize:]\n}"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tcards := newDeck() \n\thand, remainingDeck := deal(cards, 5)\n\n\thand.print()\n\tremainingDeck.print()\n}"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/4CF1190C8F534EB4816D439D601FD5FD.png\" alt=\"Screen Shot 2019-02-04 at 15.32.36.png\" width=\"748\" height=\"315\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Byte Slices</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<a href=\"https://golang.org/pkg/io/ioutil/\">https://golang.org/pkg/io/ioutil/</a>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/75459D2BEFF9799773692BEF9DA57163.png\" alt=\"Screen Shot 2019-02-04 at 15.43.21.png\" width=\"794\" height=\"382\">"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": "<h3>Deck to String</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<b>Type Conversion</b>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/66B4312FBD45232590FB44B965D4D7AD.png\" alt=\"Screen Shot 2019-02-04 at 15.48.35.png\" width=\"471\" height=\"313\">"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tgreeting := \"Hi there! \"\n\tfmt.Println([]byte(greeting))\n}"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/8C1A0F2C6263FA8C393245B29E89472C.png\" alt=\"Screen Shot 2019-02-04 at 15.50.39.png\" width=\"372\" height=\"459\">"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": "<h3>Joining a Slice of Strings</h3>"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/deck.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func (d deck) toString() string {\n\treturn strings.Join([]string(d), \",\")\n}"
+    },
+    {
+      "type": "text",
+      "data": "<a href=\"https://golang.org/pkg/strings/#Join\">https://golang.org/pkg/strings/#Join</a>"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tcards := newDeck()\n\tfmt.Println(cards.toString())\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Saving Data to the Hard Drive</h3>"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/deck.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func (d deck) saveToFile(filename string) error {\n\treturn ioutil.WriteFile(filename, []byte(d.toString()), 0666)\n}"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tcards := newDeck()\n\tcards.saveToFile(\"my_cards\")\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Reading From the Hard Drive</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/85D4320A3609BB2B277C290029B393C2.png\" alt=\"Screen Shot 2018-08-16 at 2.10.33 PM.png\" width=\"639\" height=\"290\">"
+    },
+    {
+      "type": "text",
+      "data": "<a href=\"https://golang.org/pkg/io/ioutil/#ReadFile\">https://golang.org/pkg/io/ioutil/#ReadFile</a>"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/deck.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func newDeckFromFile(filename string) deck {\n\tbyteSlice, err := ioutil.ReadFile(filename)\n\tif err != nil {\n\t\t// Option #1 - log the error and return a call to newDeck()\n\t\t// Option #2 -log the error and entirely quit the program\n\t\tfmt.Println(\"Error: \", err)\n\t\tos.Exit(1)\n\t}\n\n\tstringSlice := strings.Split(string(byteSlice), \",\") // Ace of Spades,Two of Spades,Three of Spades,...\n\treturn deck(stringSlice)\n}"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tcards := newDeckFromFile(\"my_cards\")\n\tcards.print()\n}"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/main.go (error)"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tcards := newDeckFromFile(\"my\")\n\tcards.print()\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Shuffling a Deck</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/610C4D522767BD8BDA0B5B3BA2653307.png\" alt=\"Screen Shot 2019-02-04 at 17.02.06.png\" width=\"975\" height=\"448\">"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/25B1BB49B033BE04775E7957A6250DBB.png\" alt=\"Screen Shot 2019-02-04 at 17.02.48.png\" width=\"917\" height=\"365\">"
+    },
+    {
+      "type": "text",
+      "data": "<a href=\"https://golang.org/pkg/math/rand/#Intn\">https://golang.org/pkg/math/rand/#Intn</a><br>"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/deck.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func (d deck) shuffle() {\n\tfor index := range d {\n\t\tnewPosition := rand.Intn(len(d) - 1)\n\t\t// swap item in index and in newPosition\n\t\td[index], d[newPosition] = d[newPosition], d[index]\n\n\t}\n}"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/main.go&nbsp;"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n    cards := newDeck()\n    cards.shuffle()\n    cards.print()\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Random Number Generation</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/5DB10A0CD15CABCE56083CDC286303A5.png\" alt=\"Screen Shot 2019-02-04 at 17.14.48.png\" width=\"462\" height=\"346\">"
+    },
+    {
+      "type": "text",
+      "data": "<a href=\"https://golang.org/pkg/math/rand/#Rand\">https://golang.org/pkg/math/rand/#Rand</a>"
+    },
+    {
+      "type": "text",
+      "data": "Better Approach to generate random number to change numbers every time"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/deck.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func (d deck) shuffle() {\n\tsource := rand.NewSource(time.Now().UnixNano())\n\tr := rand.New(source)\n\n\tfor i := range d {\n\t\tnewPosition := r.Intn(len(d) - 1)\n\t\td[i], d[newPosition] = d[newPosition], d[i]\n\t}\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Testing With Go</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/BA9F9688D93E48111FD9A470C3336988.png\" alt=\"Screen Shot 2019-02-04 at 17.52.24.png\" width=\"838\" height=\"446\">"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Writing Useful Tests</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/3398344C892A5D04248CCD552864317F.png\" alt=\"Screen Shot 2019-02-04 at 17.56.49.png\" width=\"868\" height=\"455\">"
+    },
+    {
+      "type": "text",
+      "data": "To make a test, create a new file ending in _test.go"
+    },
+    {
+      "type": "text",
+      "data": "/src/cards/deck_test.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func TestNewDeck(t *testing.T) {\n\td := newDeck()\n\n\tif len(d) != 16 {\n\t\tt.Errorf(\"Expected deck length of 16, but got %v\", len(d))\n\t}\n\n\tif d[0] != \"Ace of Spades\" {\n\t\tt.Errorf(\"Expected first card of Ace of Spades, but got %v\", d[0])\n\t}\n\n\tif d[len(d)-1] != \"Four of Cubes\" {\n\t\tt.Errorf(\"Expected last card of Four of Cubes, but got %v\", d[len(d)-1])\n\t}\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Testing File IO</h3>"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {\n\tos.Remove(\"_decktesting\")\n\n\tdeck := newDeck()\n\tdeck.saveToFile(\"_decktesting\")\n\n\tloadedDeck := newDeckFromFile(\"_decktesting\")\n\n\tif len(loadedDeck) != 16 {\n\t\tt.Errorf(\"Expected 16 cards in deck, got %v\", len(loadedDeck))\n\t}\n\n\tos.Remove(\"_decktesting\")\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Assignment 1: Even and Odd&nbsp;</h3>"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "func main() {\n\tnumbers := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}\n\n\tfor number := range numbers {\n\t\tif number%2 == 0 {\n\t\t\tfmt.Println(number, \" is even\")\n\t\t} else {\n\t\t\tfmt.Println(number, \" is odd\")\n\t\t}\n\t}\n}"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}
